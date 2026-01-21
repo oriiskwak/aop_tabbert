@@ -15,7 +15,7 @@
 This repository provides a **TabularBERT-based training pipeline** for predicting  
 **hitcall (binary: 0 / 1)** using OECD Test Guideline (TG) experimental datasets.
 
-### Main features
+## Main features
 
 - Combination of descriptor features and SMILES PCA features  
 - RandomForest-based feature selection  
@@ -35,65 +35,4 @@ aop_tabbert/
 ├─ opt_hitcall.py  # Main experiment script (entry point)
 ├─ requirements    # Python dependencies
 └─ setup.py        # Package setup
-⚙️ Installation
-bash
-코드 복사
-pip install -r requirements.txt
-PyTorch should be installed separately according to your CUDA environment.
-
-📥 Input dataset
-The input dataset should be placed as follows:
-
-text
-코드 복사
-datasets/
- └─ OECD TG XXX_embedded_num.csv
-Required columns
-Column name	Description
-No	Sample ID
-OECD TG XXX	Target label (0 / 1 / NaN)
-PC_*	SMILES PCA features
-Others	Descriptor features
-
-Samples with missing targets (NaN) are automatically excluded from training.
-
-🛠 Configure target TG
-Edit the top part of opt_hitcall.py:
-
-python
-코드 복사
-DATA_PATH = "./datasets/OECD TG 487_embedded_num.csv"
-TARGET_COL = "OECD TG 487"
-Select one of the recommended hyperparameter blocks depending on the TG.
-
-python
-코드 복사
-# TG 487 / 471
-TOP_K_LIST = [60, 65, 70, 120, 130, 140, 150]
-PC_DIM_LIST = [10, 12, 13, 15, 20]
-▶️ Run experiment
-bash
-코드 복사
-python opt_hitcall.py
-During execution:
-
-All (desc_topk, pc_dim) combinations are automatically grid-searched
-
-Each configuration is trained and evaluated
-
-At the end, the best configuration and classification report are printed
-
-📊 Output
-For each configuration, the following metrics are reported:
-
-test_F1
-
-AUC
-
-Precision, Recall
-
-val_th (best threshold from validation)
-
-w_pos (positive class weight)
-
-Finally, a best configuration summary based on test F1-score is printed.
+```text
