@@ -35,4 +35,8 @@ aop_tabbert/
 ├─ opt_hitcall.py  # Main experiment script (entry point)
 ├─ requirements    # Python dependencies
 └─ setup.py        # Package setup
-```text
+```
+
+## ⚙️ Installation
+pip install -r requirements.txt
+PyTorch should be installed separately according to your CUDA environment.
