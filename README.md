@@ -42,7 +42,7 @@ aop_tabbert/
 ```bash
 pip install -r requirements.txt
 ```
-PyTorch should be installed separately according to your CUDA environment.
+**PyTorch should be installed separately according to your CUDA environment.**
 
 
 ## 📥 Input dataset
@@ -51,22 +51,22 @@ PyTorch should be installed separately according to your CUDA environment.
 datasets/
  └─ OECD TG XXX_embedded_num.csv
 ```
-Required columns
+**Required columns**
 | Column name   | Description                |
 | ------------- | -------------------------- |
 | `No`          | Sample ID                  |
 | `OECD TG XXX` | Target label (0 / 1 / NaN) |
 | `PC_*`        | SMILES PCA features        |
 | Others        | Descriptor features        |
-Samples with missing targets (NaN) are automatically excluded from training.
+**Samples with missing targets (NaN) are automatically excluded from training.**
 
 ## 🛠 Configure target TG
-Edit the top part of opt_hitcall.py:
+**Edit the top part of opt_hitcall.py:**
 ```bash
 DATA_PATH = "./datasets/OECD TG 487_embedded_num.csv"
 TARGET_COL = "OECD TG 487"
 ```
-Select one of the recommended hyperparameter blocks depending on the TG.
+**Select one of the recommended hyperparameter blocks depending on the TG.**
 
 ```bash
 # TG 487 / 471
@@ -77,14 +77,9 @@ PC_DIM_LIST = [10, 12, 13, 15, 20]
 ```bash
 python opt_hitcall.py
 ```
-During execution:
-
-All (desc_topk, pc_dim) combinations are automatically grid-searched
-Each configuration is trained and evaluated
-At the end, the best configuration and classification report are printed
 
 ## 📊 Output
-For each configuration, the following metrics are reported:
+**For each configuration, the following metrics are reported:**
 ```text
 test_F1
 AUC
@@ -92,4 +87,4 @@ Precision, Recall
 val_th (best threshold from validation)
 w_pos (positive class weight)
 ```
-Finally, a best configuration summary based on test F1-score is printed.
+**Finally, a best configuration summary based on test F1-score is printed.**
