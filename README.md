@@ -38,5 +38,8 @@ aop_tabbert/
 ```
 
 ## ⚙️ Installation
+
+```text
 pip install -r requirements.txt
+```
 PyTorch should be installed separately according to your CUDA environment.
